@@ -12,7 +12,7 @@ public class AxisMove : MonoBehaviour
     }
 
     public Axis moveOnAxis;
-    public float speed;
+    public SOFloat speed;
 
     // Start is called before the first frame update
     void Start()
@@ -25,17 +25,17 @@ public class AxisMove : MonoBehaviour
     {
         if(moveOnAxis == Axis.X)
         {
-            transform.Translate(new Vector3(speed * Time.deltaTime, 0f, 0f));
+            transform.Translate(new Vector3(speed.value * Time.deltaTime, 0f, 0f));
         }
 
         if(moveOnAxis == Axis.Y)
         {
-            transform.Translate(new Vector3(0f, speed * Time.deltaTime, 0f));
+            transform.Translate(new Vector3(0f, speed.value * Time.deltaTime, 0f));
         }
 
         if(moveOnAxis == Axis.Z)
         {
-            transform.Translate(new Vector3(0f, 0f, speed * Time.deltaTime));
+            transform.Translate(new Vector3(0f, 0f, speed.value * Time.deltaTime));
         }
     }
 }
