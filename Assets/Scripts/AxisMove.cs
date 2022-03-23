@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class AxisMove : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class AxisMove : MonoBehaviour
     public Axis moveOnAxis;
     public SOFloat speed;
 
+    private Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -25,17 +28,24 @@ public class AxisMove : MonoBehaviour
     {
         if(moveOnAxis == Axis.X)
         {
-            transform.Translate(new Vector3(speed.value * Time.deltaTime, 0f, 0f));
+            transform.Translate(Vector3.right * speed.value * Time.deltaTime, Space.World);
         }
 
         if(moveOnAxis == Axis.Y)
         {
-            transform.Translate(new Vector3(0f, speed.value * Time.deltaTime, 0f));
+            //transform.Translate(Vector3.up * speed.value * Time.deltaTime, Space.World);
+
+            //rb.MovePosition(Vector3.up * speed.value * Time.deltaTime);
         }
 
         if(moveOnAxis == Axis.Z)
         {
-            transform.Translate(new Vector3(0f, 0f, speed.value * Time.deltaTime));
+            transform.Translate(Vector3.forward * speed.value * Time.deltaTime, Space.World);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        //rb.MovePosition(Vector3.up * speed.value );
     }
 }
