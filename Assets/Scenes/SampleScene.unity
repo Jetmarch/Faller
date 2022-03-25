@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 45974882}
   - component: {fileID: 45974886}
   - component: {fileID: 45974887}
+  - component: {fileID: 45974888}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -233,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: {fileID: 11400000, guid: 76b749297243e0245aa0eb6eada0e3db, type: 2}
+  force: 0
 --- !u!54 &45974887
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -248,7 +250,21 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 4
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
+--- !u!114 &45974888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45974881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d939454b34ae7478dfeaf786a97ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: {fileID: 0}
+  force: 10
 --- !u!1 &444700510 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 75c6747acc5e1804eaad9a30a1887d64, type: 3}
@@ -593,15 +609,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 75c6747acc5e1804eaad9a30a1887d64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 75c6747acc5e1804eaad9a30a1887d64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -18.5
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 75c6747acc5e1804eaad9a30a1887d64, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 75c6747acc5e1804eaad9a30a1887d64, type: 3}
       propertyPath: m_LocalRotation.w

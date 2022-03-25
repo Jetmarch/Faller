@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private SOFloat moveSpeed;
+    [SerializeField]
+    private float force = 500f;
 
 
     private Vector3 screenPoint;
@@ -32,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButton(0))
+        /*if (Input.GetMouseButton(0))
         {
             Vector3 cursorScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
             Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorScreenPoint);
@@ -57,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
             offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(
                 Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
-        }
+        }*/
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -82,16 +84,28 @@ public class PlayerController : MonoBehaviour
 
     private void OnMouseDrag()
     {
-       /* Vector3 cursorScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+        rb.velocity = Vector3.zero;
+        /*Vector3 cursorScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorScreenPoint) + offset;
-        transform.position = cursorPosition;*/
+        // transform.position = cursorPosition;
+
+        rb.velocity = cursorPosition * force;*/
+
+        Vector3 mousePositionOffset = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
+            Input.mousePosition.y, screenPoint.z)) - transform.position;
+        rb.velocity = (transform.position + mousePositionOffset - rb.transform.position) * force * Time.deltaTime;
     }
 
     private void OnMouseDown()
     {
-        /*screenPoint = Camera.main.WorldToScreenPoint(transform.position);
+        screenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
         offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(
-            Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));*/
+            Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+    }
+
+    private void OnMouseUp()
+    {
+        rb.velocity = Vector3.zero;
     }
 }
